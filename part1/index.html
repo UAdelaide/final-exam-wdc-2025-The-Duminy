@@ -8,21 +8,18 @@
 </head>
 <body>
   <div id="app">
-    <h1>Dog of the Day 🐶</h1>
+    <!-- Overloaded heading (cognitive load) -->
+    <h1>Dog Walking Service Dog Dog Dog Lots of Dog Get Dog Picture Benjamin Bordeaux The Dog is Featured Dog Today Come See Our Dogs OOOOOOOOOO Lots Of Dogs Everywhere</h1>
 
-    <img id="dog-image" :src="dogImage" />
+    <!-- Image with proper alt and fallback src -->
+    <img id="dog-image" src="" :src="dogImage" alt="Random dog from Dog API" />
 
-    <div id="dog-details">
-      <p>Name: Maximus Rex the Third</p>
-      <p>Breed: Mega Super Hyper Poodle</p>
-      <p>Size: Enormous</p>
-    </div>
-
+    <!-- Small buttons (kinematic load) with type attributes -->
     <div id="button-container">
-      <button @click="fetchDog">Get New Dog</button>
-      <button>Btn2</button>
-      <button>Btn3</button>
-      <button>Btn4</button>
+      <button type="button" @click="fetchDog">Get New Dog</button>
+      <button type="button">Btn2</button>
+      <button type="button">Btn3</button>
+      <button type="button">Btn4</button>
     </div>
   </div>
 
