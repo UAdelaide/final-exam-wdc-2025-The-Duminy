@@ -45,7 +45,7 @@
         const walks = ref([]);
         const message = ref('');
         const error = ref('');
-        const user = 3;
+        //Removed static user - Q16
 
         async function loadWalkRequests() {
           try {
@@ -57,12 +57,28 @@
           }
         }
 
+        // Q16 Edits Begin Here
+        async function getCurrentUser() {
+          try {
+            const res = await fetch('/api/users/me');
+            if (!res.ok) throw new Error('Failed to get user');
+            return await res.json();
+          } catch (err) {
+            console.error('User fetch error:', err);
+            return null;
+          }
+        }
+
         async function applyToWalk(requestId) {
           try {
+            const user = await getCurrentUser();
+            if (!user) throw new Error('User not logged in');
+
             const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ walker_id: user })
+              body: JSON.stringify({ walker_id: user.user_id })
+              // Q16 Edits End Here
             });
             const result = await res.json();
 
