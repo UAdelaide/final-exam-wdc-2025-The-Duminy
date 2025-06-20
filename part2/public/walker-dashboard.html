@@ -74,6 +74,21 @@
           }
         }
 
+        // Q14 Edits Begin Here
+        async function logout() {
+          try {
+            const res = await fetch('/api/users/logout', { method: 'POST' });
+            if (res.ok) {
+              window.location.href = 'index.html';
+            } else {
+              alert('Logout failed');
+            }
+          } catch (err) {
+            alert('Logout failed');
+          }
+        }
+        // Q14 Edits End Here
+
         onMounted(() => {
           loadWalkRequests();
         });
@@ -82,7 +97,8 @@
           walks,
           message,
           error,
-          applyToWalk
+          applyToWalk,
+          logout //Q14 Edit
         };
       }
     }).mount('#app');

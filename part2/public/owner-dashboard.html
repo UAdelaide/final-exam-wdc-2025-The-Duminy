@@ -11,6 +11,8 @@
   <div id="app" class="container py-4">
     <h1 class="mb-4 text-primary">Owner Dashboard</h1>
 
+    <button class="btn btn-danger mb-4" @click="logout">Logout</button><!--Q14 Edit-->
+
     <!-- Walk request form -->
     <div class="card mb-4">
       <div class="card-header bg-primary text-white">
@@ -115,6 +117,21 @@
           }
         }
 
+        // Q14 Edits Begin Here
+        async function logout() {
+          try {
+            const res = await fetch('/api/users/logout', { method: 'POST' });
+            if (res.ok) {
+              window.location.href = 'index.html';
+            } else {
+              alert('Logout failed');
+            }
+          } catch (err) {
+            alert('Logout failed');
+          }
+        }
+        // Q14 Edits End Here
+
         onMounted(() => {
           loadWalks();
         });
@@ -124,7 +141,8 @@
           walks,
           message,
           error,
-          submitWalkRequest
+          submitWalkRequest,
+          logout // Q14 Edit
         };
       }
     }).mount('#app');
