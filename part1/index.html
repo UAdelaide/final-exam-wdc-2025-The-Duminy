@@ -2,19 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dog of the Day</title>
+  <title>Dog Dog Dog Dog Dog Dog Dog Dog Dog Dog Dog Dog Dog Dog Dog Dog Dog</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="stylesheet" href="index.css">
+
+  <style>
+    body {
+      animation: flash-bg 1.5s infinite;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: #cccccc;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 600%;
+    }
+
+    @keyframes flash-bg {
+      0%, 100% { background-color: white; }
+      50% { background-color: #ffeccc; }
+    }
+
+    #dog-image {
+      width: 300px;
+      height: 300px;
+      margin-bottom: 10px;
+    }
+
+    #button-container button {
+      margin: 1px;
+      padding: 1px;
+      font-size: 4px;
+      cursor: pointer;
+    }
+  </style>
+
 </head>
 <body>
   <div id="app">
-    <!-- Overloaded heading (cognitive load) -->
     <h1>Dog Walking Service Dog Dog Dog Lots of Dog Get Dog Picture Benjamin Bordeaux The Dog is Featured Dog Today Come See Our Dogs OOOOOOOOOO Lots Of Dogs Everywhere</h1>
 
-    <!-- Image with proper alt and fallback src -->
     <img id="dog-image" src="" :src="dogImage" alt="Random dog from Dog API" />
 
-    <!-- Small buttons (kinematic load) with type attributes -->
     <div id="button-container">
       <button type="button" @click="fetchDog">Get New Dog</button>
       <button type="button">Btn2</button>

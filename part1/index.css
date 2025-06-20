@@ -7,16 +7,15 @@ body {
   padding: 20px;
 }
 
+h1 {
+    font-size: 600%;
+}
+
 @keyframes flash-bg {
   0%, 100% { background-color: white; }
   50% { background-color: #ffeccc; }
 }
 
-
-#dog-details {
-  font-size: 9px;
-  line-height: 1.2;
-}
 
 #dog-image {
   width: 300px;
@@ -25,8 +24,8 @@ body {
 }
 
 #button-container button {
-  margin: 2px;
-  padding: 4px;
-  font-size: 10px;
-  cursor: pointer;
+    margin: 1px;
+    padding: 1px;
+    font-size: 4px;
+    cursor: pointer;
 }
