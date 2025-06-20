@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
-app.get('/api/dogs', async (req, res) => {
+router.get('/api/dogs', async (req, res) => {
   try {
     const [rows] = await pool.query(`
       SELECT Dogs.name AS dog_name, Dogs.size, Users.username AS owner_username

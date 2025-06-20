@@ -35,6 +35,31 @@
     </div>
   </div>
 
+  <!--Q17 Edits Begin Here-->
+  <div v-if="dogs.length" class="mt-5">
+    <h2>Dogs List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Size</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="dog in dogs" :key="dog.dog_name">
+          <td><img :src="dog.photo" alt="Dog photo" style="height: 80px; border-radius: 8px;"></td>
+          <td>{{ dog.dog_name }}</td>
+          <td>{{ dog.size }}</td>
+          <td>{{ dog.owner_username }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!--Q17 Edits End Here-->
+
   <script>
     const { createApp } = Vue;
     createApp({
@@ -62,11 +87,37 @@
             }
           })
           .catch(() => alert('Login failed'));
+        },
+
+        <!--Q17 Edits Begin Here-->
+        async loadDogs() {
+          try {
+            const res = await fetch('/api/dogs');
+            if (!res.ok) throw new Error('Failed to load dogs');
+            const dogsData = await res.json();
+
+            const dogsWithPhotos = await Promise.all(dogsData.map(async dog => {
+              const photoRes = await fetch('https://dog.ceo/api/breeds/image/random');
+              const photoData = await photoRes.json();
+              return {
+                ...dog,
+                photo: photoData.message
+              };
+            }));
+
+            this.dogs = dogsWithPhotos;
+          } catch (err) {
+            console.error(err);
+          }
         }
+      },
+      mounted() {
+        this.loadDogs();
       }
     }).mount('#app');
   </script>
 
+  <!--Q17 Edits End Here-->
   <!--Q13 Edits End here-->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
