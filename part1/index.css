@@ -1,0 +1,32 @@
+body {
+  animation: flash-bg 1.5s infinite;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #cccccc;
+  margin: 0;
+  padding: 20px;
+}
+
+@keyframes flash-bg {
+  0%, 100% { background-color: white; }
+  50% { background-color: #ffeccc; }
+}
+
+
+#dog-details {
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+#dog-image {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+#button-container button {
+  margin: 2px;
+  padding: 4px;
+  font-size: 10px;
+  cursor: pointer;
+}

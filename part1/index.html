@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dog of the Day</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Dog of the Day 🐶</h1>
+
+    <!-- Image without alt (accessibility break) -->
+    <img id="dog-image" :src="dogImage" />
+
+    <div id="dog-details">
+      <p>Name: Maximus Rex the Third</p>
+      <p>Breed: Mega Super Hyper Poodle</p>
+      <p>Size: Enormous</p>
+    </div>
+
+    <!-- Small buttons (kinematic load break) -->
+    <div id="button-container">
+      <button @click="fetchDog">Get New Dog</button>
+      <button>Btn2</button>
+      <button>Btn3</button>
+      <button>Btn4</button>
+    </div>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          dogImage: ''
+        };
+      },
+      methods: {
+        fetchDog() {
+          fetch('https://dog.ceo/api/breeds/image/random')
+            .then(res => res.json())
+            .then(data => {
+              this.dogImage = data.message;
+            });
+        }
+      },
+      mounted() {
+        this.fetchDog();
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
